@@ -1,4 +1,4 @@
-# Sao Paulo
+# VPC
 resource "aws_vpc" "VPC-D-SaoPaolo-Test" {
     provider = aws.saopaulo
   cidr_block = "10.23.0.0/16"

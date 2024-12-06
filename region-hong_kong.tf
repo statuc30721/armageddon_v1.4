@@ -1,4 +1,4 @@
-# Hong Kong
+# VPC
 resource "aws_vpc" "VPC-F-HongKong-Test" {
     provider = aws.hongkong
   cidr_block = "10.25.0.0/16"
@@ -12,6 +12,7 @@ resource "aws_vpc" "VPC-F-HongKong-Test" {
 }
 
 #------------------------------------------------------#
+# SUBENTS
 #
 #  Hong Kong VPC Public IP space.
 resource "aws_subnet" "public-ap-east-1a" {

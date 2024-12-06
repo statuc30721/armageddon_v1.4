@@ -1,4 +1,4 @@
-# Australia
+# VPC
 resource "aws_vpc" "VPC-E-Australia-Test" {
     provider = aws.australia
   cidr_block = "10.24.0.0/16"
@@ -12,6 +12,7 @@ resource "aws_vpc" "VPC-E-Australia-Test" {
 }
 
 #------------------------------------------------------#
+# SUBNETS
 #
 #  Australia VPC Public IP space.
 resource "aws_subnet" "public-ap-southeast-2a" {
@@ -78,7 +79,7 @@ resource "aws_subnet" "private-ap-southeast-2b" {
 }
 
 #-----------------------------------------------#
-# AInternet Gateway
+# Internet Gateway
 
 resource "aws_internet_gateway" "igw_AUS" {
   vpc_id = aws_vpc.VPC-E-Australia-Test.id

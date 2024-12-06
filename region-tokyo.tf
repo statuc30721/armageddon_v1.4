@@ -1,4 +1,4 @@
-# Tokyo
+# VPC
 
 resource "aws_vpc" "VPC-A-Tokyo-Test" {
     

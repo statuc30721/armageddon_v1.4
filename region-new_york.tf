@@ -1,5 +1,5 @@
 
-# New York
+# VPC
 
 resource "aws_vpc" "VPC-B-NewYork-Test" {
     provider = aws.newyork

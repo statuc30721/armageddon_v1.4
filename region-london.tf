@@ -1,4 +1,4 @@
-# London
+# VPC
 resource "aws_vpc" "VPC-C-London-Test" {
     provider = aws.london
   cidr_block = "10.22.0.0/16"

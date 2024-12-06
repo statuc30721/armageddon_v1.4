@@ -1,4 +1,4 @@
-# California  
+# VPC
 resource "aws_vpc" "VPC-G-California-Test" {
     provider = aws.california
     cidr_block = "10.26.0.0/16"
