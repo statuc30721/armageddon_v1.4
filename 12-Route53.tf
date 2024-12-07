@@ -137,9 +137,9 @@ resource "aws_route53_record" "app1_HK" {
 
   set_identifier = "app1_HK"
 
-# Sets geolocation to China.
+# Sets geolocation to Hong Kong.
   geolocation_routing_policy {
-    country = "CN"
+    country = "HK"
   }
 
 alias {
