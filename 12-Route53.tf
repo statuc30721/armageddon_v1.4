@@ -137,9 +137,9 @@ resource "aws_route53_record" "app1_HK" {
 
   set_identifier = "app1_HK"
 
-# Sets geolocation to Hong Kong.
+# Sets geolocation to China.
   geolocation_routing_policy {
-    country = "HK"
+    country = "CN"
   }
 
 alias {
@@ -150,6 +150,7 @@ alias {
  }
   
 }
+
 
 # California Region
 resource "aws_route53_record" "app1_CALI" {
@@ -162,7 +163,7 @@ resource "aws_route53_record" "app1_CALI" {
 # Sets geolocation to US West.
   geolocation_routing_policy {
     country = "US"
-    subdivision = "West"
+    subdivision = "CA"
   }
 
 alias {
@@ -173,3 +174,4 @@ alias {
  }
   
 }
+
