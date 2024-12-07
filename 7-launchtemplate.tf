@@ -124,6 +124,7 @@ user_data = base64encode(file("./entry-script.sh"))
     }
 }
 
+
 #---------------------------------------------------------------------#
 # Sao Paulo Region
 resource "aws_launch_template" "app1_SaoPaulo_LT" {
@@ -251,3 +252,4 @@ user_data = base64encode(file("./entry-script.sh"))
         create_before_destroy = true
     }
 }
+

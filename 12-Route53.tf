@@ -1,12 +1,18 @@
 #
-#
+# Retrieve the DNS ZONE ID
 data "aws_route53_zone" "main" {
     name    = "devlab405.click" # Domain name 
     private_zone = false
 }
 
+# Print to the console the DNS ZONE ID.
+output "dns_zone" {
+  value = data.aws_route53_zone.main
+  
+}
+
 # Asia 
-resource "aws_route53_record" "default" {
+resource "aws_route53_record" "tokyo" {
   zone_id = data.aws_route53_zone.main.zone_id
   name = "app1.devlab405.click"
   type = "A"
@@ -29,12 +35,11 @@ resource "aws_route53_record" "default" {
  }
 }
 
-/*
+
 # East Coast USA Region
 
-
 resource "aws_route53_record" "app1_NY" {
-  zone_id = aws_route53_record.app1.zone_id
+  zone_id = data.aws_route53_zone.main.zone_id
   name = "app1.devlab405.click"
   type = "A"
 
@@ -54,16 +59,16 @@ alias {
   
 }
 
-*/
 
-/*
+
 # Europe Region
+
 resource "aws_route53_record" "app1_LON" {
-  zone_id = aws_route53_record.app1.zone_id
+  zone_id = data.aws_route53_zone.main.zone_id
   name = "app1.devlab405.click"
   type = "A"
 
-  set_identifier = "app1_LON"
+  set_identifier = "europe-load-balancer"
 
 # Sets geolocation to Europe.
   geolocation_routing_policy {
@@ -71,17 +76,19 @@ resource "aws_route53_record" "app1_LON" {
   }
 
 alias {
-  name = aws_lb.ASG01-LON-LB01.name
+  name = aws_lb.ASG01-LON-LB01.dns_name
   zone_id = aws_lb.ASG01-LON-LB01.zone_id
   evaluate_target_health = true
    
  }
   
 }
-/*
+
+
+
 # South America Region
 resource "aws_route53_record" "app1_SAO" {
-  zone_id = aws_route53_record.app1.zone_id
+  zone_id = data.aws_route53_zone.main.zone_id
   name = "app1.devlab405.click"
   type = "A"
 
@@ -93,11 +100,76 @@ resource "aws_route53_record" "app1_SAO" {
   }
 
 alias {
-  name = aws_lb.ASG01-SAO-LB01.name
+  name = aws_lb.ASG01-SAO-LB01.dns_name
   zone_id = aws_lb.ASG01-SAO-LB01.zone_id
   evaluate_target_health = true
    
  }
   
 }
-*/
+
+# Australia Region
+resource "aws_route53_record" "app1_AUS" {
+  zone_id = data.aws_route53_zone.main.zone_id
+  name = "app1.devlab405.click"
+  type = "A"
+
+  set_identifier = "app1_AUS"
+
+# Sets geolocation to Australia.
+  geolocation_routing_policy {
+    country = "AU"
+  }
+
+alias {
+  name = aws_lb.ASG01-AUS-LB01.dns_name
+  zone_id = aws_lb.ASG01-AUS-LB01.zone_id
+  evaluate_target_health = true
+   
+ }
+  
+}
+# Hong Kong Region
+resource "aws_route53_record" "app1_HK" {
+  zone_id = data.aws_route53_zone.main.zone_id
+  name = "app1.devlab405.click"
+  type = "A"
+
+  set_identifier = "app1_HK"
+
+# Sets geolocation to Hong Kong.
+  geolocation_routing_policy {
+    country = "HK"
+  }
+
+alias {
+  name = aws_lb.ASG01-HK-LB01.dns_name
+  zone_id = aws_lb.ASG01-HK-LB01.zone_id
+  evaluate_target_health = true
+   
+ }
+  
+}
+
+# California Region
+resource "aws_route53_record" "app1_CALI" {
+  zone_id = data.aws_route53_zone.main.zone_id
+  name = "app1.devlab405.click"
+  type = "A"
+
+  set_identifier = "app1_CALI"
+
+# Sets geolocation to US West.
+  geolocation_routing_policy {
+    country = "US"
+    subdivision = "West"
+  }
+
+alias {
+  name = aws_lb.ASG01-CALI-LB01.dns_name
+  zone_id = aws_lb.ASG01-CALI-LB01.zone_id
+  evaluate_target_health = true
+   
+ }
+  
+}
